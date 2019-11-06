@@ -1,2 +1,2 @@
-# dotfiles
-dotfile configuration (alacritty, vim, zsh, nvim)
+Dotfiles configuration (alacritty, vim, zsh, nvim)
+----------------------
