@@ -2,12 +2,13 @@ syntax on
 syntax enable
 " folding
 set foldmethod=indent
+set foldlevel=20
 
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vimrc
 
-let g:python3_host_prog = '/Users/Han/miniconda2/envs/spinningup/bin/python'
+let g:python3_host_prog = '/Users/han/anaconda3/bin/python'
 
 
 call plug#begin('~/.config/nvim/plugged')
@@ -19,6 +20,7 @@ Plug 'ncm2/ncm2-path'
 Plug 'ncm2/ncm2-jedi'
 Plug 'neomake/neomake'
 Plug 'scrooloose/nerdtree'
+Plug 'iamcco/markdown-preview.vim'
 
 
 
@@ -107,8 +109,8 @@ noremap <LEADER>/ :set splitbelow<CR>:sp<CR>:term<CR>
 noremap <LEADER>ip :set splitbelow<CR>:sp<CR>:term ipython<CR>
 
 
-
-
+" Markdown preview
+noremap <LEADER>r :MarkdownPreview<CR>
 
 " key mapping
 autocmd BufWinEnter *.py nnoremap <LEADER>r :w<CR>:!python %:p<CR>
@@ -134,8 +136,10 @@ let airline#extensions#ale#warning_symbol = 'W:'
 noremap <LEADER>, :Autoformat<CR>
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
-let g:autoformat_remove_trailing_spaces = 0
-let g:formatter_yapf_style = 'pylint'
+let g:autoformat_remove_trailing_spaces = 1
+let g:formatter_yapf_style = 'flake8'
+"let g:syntastic_python_checkers = ['pylint']
+"let g:syntastic_python_pylint_args = '-E'
 " neomake
 call neomake#configure#automake('w')
 " NERDTREE
